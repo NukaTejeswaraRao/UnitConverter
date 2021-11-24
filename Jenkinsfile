@@ -14,7 +14,7 @@ pipeline {
                 echo 'Building..'
 		checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/NukaTejeswaraRao/UnitConverter.git']]])
 		bat "mvn clean -Dmaven.test.failure.ignore=true package "
-		bat "sh deploy.sh"
+		bat "deploy.sh"
             }
         }
         stage('Test') {
