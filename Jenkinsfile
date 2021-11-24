@@ -13,7 +13,7 @@ pipeline {
                 echo "${params.Greeting} World!"
                 echo 'Building..'
 		checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/NukaTejeswaraRao/UnitConverter.git']]])
-		bat "mvn clean -Dmaven.test.failure.ignore=true "
+		bat "mvn clean -Dmaven.test.failure.ignore=true package "
             }
         }
         stage('Test') {
