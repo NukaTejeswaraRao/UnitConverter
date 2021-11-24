@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { node { label 'linux' } }
     tools {
 	maven "maven"
     }
@@ -13,15 +13,15 @@ pipeline {
                 echo "${params.Greeting} World!"
                 echo 'Building..'
 		checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/NukaTejeswaraRao/UnitConverter.git']]])
-		bat "mvn clean -Dmaven.test.failure.ignore=true package "
+		sh "mvn clean -Dmaven.test.failure.ignore=true package "
 		echo "build completed, now moving the jar file to deploy location"
-		bat "deploy.sh"
+		sh "deploy.sh"
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
-                bat "mvn test"
+                sh "mvn test"
             }
         }
         stage('Deploy') {
