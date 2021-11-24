@@ -14,6 +14,7 @@ pipeline {
                 echo 'Building..'
 		checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/NukaTejeswaraRao/UnitConverter.git']]])
 		bat "mvn clean -Dmaven.test.failure.ignore=true package "
+		echo "build completed, now moving the jar file to deploy location"
 		bat "deploy.sh"
             }
         }
