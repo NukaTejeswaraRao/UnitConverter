@@ -1,7 +1,7 @@
-import groovy.json.JsonSlurper
-def list = new JsonSlurper().parseText('[{"Greeting":"welcome to the big data world , Mr.","Name":"Tejeswara"}]')
-echo 'list.Greeting'
-echo 'list.Name'
+//import groovy.json.JsonSlurper
+//def list = new JsonSlurper().parseText('[{"Greeting":"welcome to the big data world , Mr.","Name":"Tejeswara"}]')
+//echo 'list.Greeting'
+//echo 'list.Name'
 pipeline {
     agent any
     tools {
