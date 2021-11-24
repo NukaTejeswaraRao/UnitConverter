@@ -3,9 +3,6 @@ pipeline {
     tools {
 	maven "maven"
     }
-    environment { 
-        input = 'yes'
-    }
     parameters {
         string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
     }
@@ -15,7 +12,6 @@ pipeline {
             steps {
                 echo "${params.Greeting} World!"
                 echo 'Building..'
-                echo "$input"
 		checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/NukaTejeswaraRao/UnitConverter.git']]])
 		sh "mvn -Dmaven.test.failure.ignore=true clean package"
             }
