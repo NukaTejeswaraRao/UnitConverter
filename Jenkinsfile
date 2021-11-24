@@ -16,6 +16,7 @@ pipeline {
                 echo "${params.Greeting} World!"
                 echo 'Building..'
                 echo "$input"
+		checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/NukaTejeswaraRao/UnitConverter.git']]])
 		bat "mvn clean"
             }
         }
