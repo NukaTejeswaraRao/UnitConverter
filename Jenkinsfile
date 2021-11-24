@@ -1,12 +1,15 @@
 pipeline {
     agent any
+    tools {
+	maven 'maven'
+    }
     environment { 
         input = 'yes'
     }
     parameters {
         string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
     }
-
+	
     stages {
         stage('Build') {
             steps {
