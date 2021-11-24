@@ -4,7 +4,8 @@ pipeline {
 	maven "maven"
     }
     parameters {
-        string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
+        string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet?')
+	string(name: 'Name', defaultValue: 'Nuka Tejeswara', description: 'Whom should I greet?')
     }
 	
     stages {
